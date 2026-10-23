@@ -1,0 +1,23 @@
+{
+  "name": "eventos-industriais-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24 <25" },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node --test --experimental-test-coverage --test-coverage-include=src/domain/*.ts --test-coverage-include=src/services/*.ts --test-coverage-lines=90 --test-coverage-branches=80 tests/*.test.ts",
+    "test:e2e": "node --test tests/*.e2e.mjs",
+    "check": "npm run build && npm test && npm run test:e2e"
+  },
+  "dependencies": { "react": "18.3.1", "react-dom": "18.3.1" },
+  "devDependencies": {
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "typescript": "5.6.2",
+    "vite": "7.3.6",
+    "playwright": "1.62.1"
+  }
+}

@@ -1,0 +1,38 @@
+### Criar evento de produção
+POST http://localhost:8080/api/events
+Content-Type: application/json
+
+{
+  "eventId": "EVT-1001",
+  "eventType": "PRODUCTION",
+  "description": "Linha de produção iniciada",
+  "timestamp": "2026-05-20T10:00:00"
+}
+
+### Criar evento de qualidade (gera auditoria)
+POST http://localhost:8080/api/events
+Content-Type: application/json
+
+{
+  "eventId": "EVT-1002",
+  "eventType": "QUALITY",
+  "description": "Inspeção de qualidade aprovada",
+  "timestamp": "2026-05-20T10:05:00"
+}
+
+### Repetir o primeiro POST deve retornar 409
+
+### Listar
+GET http://localhost:8080/api/events?page=0&size=10
+
+### Filtrar
+GET http://localhost:8080/api/events?eventType=QUALITY&page=0&size=10
+
+### Consultar por ID
+GET http://localhost:8080/api/events/EVT-1002
+
+### Consultar auditoria
+GET http://localhost:8080/api/events/EVT-1002/audit
+
+### Saúde
+GET http://localhost:8080/actuator/health

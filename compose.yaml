@@ -1,0 +1,17 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - events-data:/app/data
+    environment:
+      DB_URL: jdbc:h2:file:/app/data/events;DB_CLOSE_ON_EXIT=FALSE
+  frontend:
+    build: ./frontend
+    ports:
+      - "127.0.0.1:5173:80"
+    depends_on:
+      - backend
+volumes:
+  events-data:
